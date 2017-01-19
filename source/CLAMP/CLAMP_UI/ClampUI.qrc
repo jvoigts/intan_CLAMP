@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/Intan_Icon_32p_trans24.png</file>
+        <file>images/splash.png</file>
+        <file>images/Zoom_in.png</file>
+        <file>images/Zoom_out.png</file>
+        <file>images/Zoom_fwd.png</file>
+        <file>images/Zoom_back.png</file>
+        <file>images/Locked.png</file>
+        <file>images/Unlocked.png</file>
+    
+        <file>sounds/beep.wav</file>
+        <file>sounds/buzz.wav</file>
+    </qresource>
+</RCC>
