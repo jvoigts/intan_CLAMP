@@ -438,7 +438,7 @@ void Plot::drawPlotPiece(QPainter& painter, double tMin, double tMax, LineSegmen
     const vector<double>& y = lineSegment.y;
     const vector<double>& t = lineSegment.t;
     auto iter = std::upper_bound(t.begin(), t.end(), tMax);
-    int maxIteration = std::min(static_cast<unsigned int>(iter - t.begin()), t.size() - 1);
+    int maxIteration = std::min(static_cast<std::vector<double>::size_type>(iter - t.begin()), t.size() - 1);
     for (int i = lineSegment.getFirstIndexToDraw(tMin); i <= maxIteration; ++i) {
         double normalizedT = tAxis->valueToSteps(t[i]);
         double normalizedY = yAxis->valueToSteps(y[i]);

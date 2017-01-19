@@ -209,6 +209,8 @@ ArbWaveformParamsDisplay::ArbWaveformParamsDisplay(bool iClamp_) :
 
 void ArbWaveformParamsDisplay::loadArbWaveform()
 {
+    /*
+
 	QString filename;
 
 	filename = QFileDialog::getOpenFileName(this,
@@ -251,13 +253,16 @@ void ArbWaveformParamsDisplay::loadArbWaveform()
 		bool markerOut;
 		bool digOut;
 		QString str;
+
 		while (!file.atEnd()) {
+
 			QByteArray line = file.readLine();
 			lineNum++;
 			QStringList stringList;
 			for (auto& index : line.split(',')) {
 				stringList.push_back(index);
 			}
+
 			if (stringList.size() == 6) {
 				waveformNumber = stringList[0].toInt();  // TODO: add error checking for this parameter
 				appliedDiscreteValue = stringList[1].toInt();
@@ -288,6 +293,7 @@ void ArbWaveformParamsDisplay::loadArbWaveform()
 				file.close();
 				return;
 			}
+
 			if (stringList.size() > 1) {
 				if (numTimesteps < 1) {
 					QMessageBox::warning(this, tr("CLAMP Controller"), tr("Syntax error in arbitrary waveform file, line ") + str.setNum(lineNum) + tr(".  Duration must be greater than zero."), QMessageBox::Ok);
@@ -335,17 +341,18 @@ void ArbWaveformParamsDisplay::loadArbWaveform()
 		}
 
 		file.close();
-	}
+    } // if (file.open(QIODevice::ReadOnly)) {
+    */
 }
 
 SimplifiedWaveform ArbWaveformParamsDisplay::getSimplifiedWaveform(int holdingValue, double pipetteOffset)
 {
-	SimplifiedWaveform adjustedWaveform;
-	adjustedWaveform = simplifiedWaveform;
-	for (unsigned int i = 0; i < adjustedWaveform.waveform.size(); i++) {
-		adjustedWaveform.waveform[i].appliedDiscreteValue += holdingValue;
-	}
-	return adjustedWaveform;
+    SimplifiedWaveform adjustedWaveform;
+    adjustedWaveform = simplifiedWaveform;
+    for (unsigned int i = 0; i < adjustedWaveform.waveform.size(); i++) {
+        adjustedWaveform.waveform[i].appliedDiscreteValue += holdingValue;
+    }
+    return adjustedWaveform;
 }
 
 //--------------------------------------------------------------------------
@@ -423,7 +430,6 @@ PulseTrainDialog::PulseTrainDialog(QWidget* parent, PulseTrainParams& params_) :
     QDialog(parent),
     params(params_)
 {
-
     QVBoxLayout* layout = new QVBoxLayout();
     layout->addWidget(new NumCyclesWidget(params.numPulses, "Number of pulses:"));
 

@@ -34,8 +34,9 @@ using std::endl;
 {                             \
    std::ostringstream os_;    \
    os_ << "  DEBUG: " << s;                   \
-   OutputDebugStringA( os_.str().c_str() );  \
 }
+
+//OutputDebugStringA( os_.str().c_str() );
 
 // Logging -----------------------------------------------------------------
 // Logging goes to this, which may point to dev_null

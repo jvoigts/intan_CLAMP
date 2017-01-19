@@ -129,9 +129,8 @@ void ClampThread::startRunning() {
 		if (i != unit) {
 			if (voltageClampMode[i]) {
 				simplifiedWaveform[i] = voltageWidget[i]->getSimplifiedWaveform(state.board->getSamplingRateHz(), i != unit, lastIndex);
-				DEBUGOUT("simplifiedWaveform[i].waveform[0].appliedDiscreteValue = " << simplifiedWaveform[i].waveform[0].appliedDiscreteValue << endl);
-			}
-			else {
+                //DEBUGOUT("simplifiedWaveform[i].waveform[0].appliedDiscreteValue = " << simplifiedWaveform[i].waveform[0].appliedDiscreteValue << endl);
+            } else {
 				simplifiedWaveform[i] = currentWidget[i]->getSimplifiedWaveform(state.board->getSamplingRateHz(), i != unit, lastIndex);
 			}
 		}

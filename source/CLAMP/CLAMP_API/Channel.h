@@ -155,8 +155,8 @@ namespace CLAMP {
 
 		/// Methods for saving the current clamp step size.  These methods do not affect the actual current step
 		//  size in any way; they only read and write from/to the rememberedCurrentStep private variable.
-        void Channel::rememberCurrentStep(double currentStep);
-        double Channel::recallCurrentStep() const;
+        void rememberCurrentStep(double currentStep);
+        double recallCurrentStep() const;
 
         /// Desired bandwidth of the low-pass filter, in Hz.
         double desiredBandwidth;
