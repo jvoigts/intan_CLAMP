@@ -1187,7 +1187,7 @@ namespace CLAMP {
                 << target << "\n";
 
             int delta = right.coarse - left.coarse;
-            if (target > abs(leftCurrent)) {
+            if (target > fabs(leftCurrent)) {
                 int newCoarse = std::max(left.coarse - delta, 0);
                 if (left.coarse == newCoarse) {
                     LOG(true) << "Limit reached; calibration failed\n";
@@ -1197,7 +1197,7 @@ namespace CLAMP {
                 left.coarse = newCoarse;
                 return true;
             }
-            else if (target < abs(rightCurrent)) {
+            else if (target < fabs(rightCurrent)) {
                 int newCoarse = std::min(right.coarse + delta, (int)CurrentCalibration::MAX_COARSE);
                 if (right.coarse == newCoarse) {
                     LOG(true) << "Limit reached; calibration failed\n";
@@ -1264,7 +1264,7 @@ namespace CLAMP {
                 << "(" << (int)right.coarse << "," << (int)right.fine << ")" << "\t" << rightCurrent << "\t"
                 << target << "\n";
 
-            if (abs(midCurrent) < target) {
+            if (fabs(midCurrent) < target) {
                 // right = mid - 1
                 if (left.coarse != right.coarse) {
                     right.coarse = mid.coarse - 1;
@@ -1281,7 +1281,7 @@ namespace CLAMP {
                 }
                 rightCurrent = midCurrent;
             }
-            else if (abs(midCurrent) > target) {
+            else if (fabs(midCurrent) > target) {
                 // left = mid + 1
                 if (left.coarse != right.coarse) {
                     left.coarse = mid.coarse + 1;
@@ -1307,8 +1307,8 @@ namespace CLAMP {
 
         // Chooses either saved or mid
         CurrentCalibration ClampCurrentCalibrationHelper::getBest() const {
-            int savedDiff = abs(saved.fine - (CurrentCalibration::MAX_FINE/2));
-            int midDiff = abs(mid.fine - (CurrentCalibration::MAX_FINE / 2));
+            int savedDiff = fabs(saved.fine - (CurrentCalibration::MAX_FINE/2));
+            int midDiff = fabs(mid.fine - (CurrentCalibration::MAX_FINE / 2));
             return (midDiff < savedDiff) ? mid : saved;
         }
         /// \endcond
@@ -1744,7 +1744,7 @@ namespace CLAMP {
                     assert((end - begin) > 10);
                     assert(!std::isnan(*begin));
                     assert(!std::isnan(*(end - 1)));
-                    currents.push_back(abs(DataAnalysis::calculateBestResidual(begin, end)));
+                    currents.push_back(fabs(DataAnalysis::calculateBestResidual(begin, end)));
                 }
             }
 
