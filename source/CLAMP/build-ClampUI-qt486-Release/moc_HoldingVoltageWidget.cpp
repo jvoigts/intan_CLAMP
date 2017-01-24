@@ -22,7 +22,7 @@ static const uint qt_meta_data_HoldingVoltageWidget[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,6 +32,8 @@ static const uint qt_meta_data_HoldingVoltageWidget[] = {
  // slots: signature, parameters, type, tag, flags
       32,   22,   21,   21, 0x08,
       66,   21,   21,   21, 0x08,
+      92,   86,   21,   21, 0x08,
+     115,   86,   21,   21, 0x08,
 
        0        // eod
 };
@@ -39,7 +41,8 @@ static const uint qt_meta_data_HoldingVoltageWidget[] = {
 static const char qt_meta_stringdata_HoldingVoltageWidget[] = {
     "HoldingVoltageWidget\0\0valueInmV\0"
     "setHoldingVoltageInternal(double)\0"
-    "setSliderValue(int)\0"
+    "setSliderValue(int)\0value\0"
+    "setminus70Button(bool)\0set0Button(bool)\0"
 };
 
 void HoldingVoltageWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -50,6 +53,8 @@ void HoldingVoltageWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         switch (_id) {
         case 0: _t->setHoldingVoltageInternal((*reinterpret_cast< double(*)>(_a[1]))); break;
         case 1: _t->setSliderValue((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 2: _t->setminus70Button((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 3: _t->set0Button((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -87,9 +92,9 @@ int HoldingVoltageWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }

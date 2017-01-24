@@ -25,7 +25,10 @@ protected:
 };
 
 //--------------------------------------------------------------------------
-HoldingVoltageWidget::HoldingVoltageWidget() {
+HoldingVoltageWidget::HoldingVoltageWidget():
+minus70Button(nullptr),
+zeroButton(nullptr)
+{
     slider = new MySlider();
     slider->setOrientation(Qt::Orientation::Horizontal);
     slider->setRange(-40, 40);
@@ -47,9 +50,19 @@ HoldingVoltageWidget::HoldingVoltageWidget() {
     tmp->setAlignment(Qt::AlignCenter);
     grid->addWidget(tmp, 1, 1, 1, 1);
 
-    tmp = new QLabel("0");
-    tmp->setAlignment(Qt::AlignCenter);
-    grid->addWidget(tmp, 1, 5, 1, 1);
+    minus70Button = new QPushButton("-70", this);
+    connect(minus70Button, SIGNAL(clicked(bool)), this, SLOT(setminus70Button(bool)));
+    minus70Button->setEnabled(true);
+    grid->addWidget(minus70Button, 1, 2, 1, 1);
+
+    zeroButton = new QPushButton("0", this);
+    connect(zeroButton, SIGNAL(clicked(bool)), this, SLOT(set0Button(bool)));
+    zeroButton->setEnabled(true);
+    grid->addWidget(zeroButton, 1, 3, 1, 1);
+
+    //tmp = new QLabel("0");
+    //tmp->setAlignment(Qt::AlignCenter);
+    //grid->addWidget(tmp, 1, 5, 1, 1);
 
     tmp = new QLabel("100");
     tmp->setAlignment(Qt::AlignCenter);
@@ -57,6 +70,15 @@ HoldingVoltageWidget::HoldingVoltageWidget() {
 
     setTitle(tr("Holding Voltage"));
     setLayout(grid);
+}
+
+
+void HoldingVoltageWidget::setminus70Button(bool value) {
+   setHoldingVoltageInternal(-70);
+}
+
+void HoldingVoltageWidget::set0Button(bool value) {
+   setHoldingVoltageInternal(0);
 }
 
 void HoldingVoltageWidget::setSliderValue(int) {
